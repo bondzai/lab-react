@@ -1,19 +1,33 @@
-import {useEffect, useState} from "react"
+import {useContext, useEffect, useState} from "react"
+import { DataContext } from "../App";
 import QuestionsData from "../data/QuestionsData";
 
 const Quiz = () => {
     const [current,setCurrent] = useState(0)
     const [selectedChoice,setSelectedChoice] = useState("")
+    const {score,setScore,setAppState} = useContext(DataContext)
 
     useEffect(() => {
         checkAnswer()
     },[selectedChoice])
     
     const checkAnswer = () => {
-        if ((selectedChoice != "") && (selectedChoice === QuestionsData[current].answer)) {
-            console.log("Correct")
+        if (selectedChoice != "") {
+            if (selectedChoice === QuestionsData[current].answer) {
+                setScore(score + 1)
+                goNextQuestion()
+            } else {
+                goNextQuestion()
+            }
+        }
+    }
+
+    const goNextQuestion = () => {
+        setSelectedChoice("")
+        if (current === QuestionsData.length - 1) {
+            setAppState("score")
         } else {
-            console.log("Wrong")
+            setCurrent(current + 1)
         }
     }
 
