@@ -9,6 +9,7 @@ const Quiz = () => {
 
     useEffect(() => {
         checkAnswer()
+        // eslint-disable-next-line
     },[selectedChoice])
     
     const checkAnswer = () => {
