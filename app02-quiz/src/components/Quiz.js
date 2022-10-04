@@ -1,9 +1,22 @@
-import {useState} from "react"
+import {useEffect, useState} from "react"
 import QuestionsData from "../data/QuestionsData";
 
 const Quiz = () => {
     const [current,setCurrent] = useState(0)
     const [selectedChoice,setSelectedChoice] = useState("")
+
+    useEffect(() => {
+        checkAnswer()
+    },[selectedChoice])
+    
+    const checkAnswer = () => {
+        if ((selectedChoice != "") && (selectedChoice === QuestionsData[current].answer)) {
+            console.log("Correct")
+        } else {
+            console.log("Wrong")
+        }
+    }
+
     return (
         <div className = "quiz">
             <h1> {QuestionsData[current].question} </h1>
