@@ -1,23 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Currency from './components/Currency';
+import money from "./img/money.png"
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <img src = {money} alt = "logo"/>
+      <h1> Currency convertion API</h1>
+        <div className = "container">
+          <Currency/>
+          <div className = "equal"> = </div>
+          <Currency/>
+        </div>
     </div>
   );
 }
