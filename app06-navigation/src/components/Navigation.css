@@ -60,7 +60,7 @@ svg {
     border-radius: 4px;
 }
 .menu-item a:hover {
-    color: orange;
+    background: orange;
 }
 span {
     margin-left: 16px;
