@@ -1,11 +1,12 @@
 import './Currency.css'
-const Currency = () => {
+const Currency = (props) => {
+    const {currencyChoice} = props      
     return (
         <div className = "currency">
             <select>
-                <option> THB </option>
-                <option> USD </option>
-                <option> EUR </option>
+                {currencyChoice.map((choice)=>
+                    <option key = {choice} value = {choice}> {choice} </option>
+                )}
             </select>
             <input type = "number"/>
         </div>
