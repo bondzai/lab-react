@@ -7,10 +7,18 @@ function App() {
   const [currencyChoice,setCurrencyChoice] = useState([])
   const [source,setSource] = useState("USD")
   const [destination,setDestination] = useState("THB")
-
-  const [amount,setAmount] = useState(1)
+  const [inputAmount,setInputAmount] = useState(1)
   const [exchangeRate,setExchangeRate] = useState(0)
+  const [checkSource,setCheckSource] = useState(true)
 
+  let sourceAmount,destinationAmount
+  if (checkSource) {
+    sourceAmount = inputAmount
+    destinationAmount = (inputAmount * exchangeRate).toFixed(2)
+  } else {
+    destinationAmount = inputAmount
+    sourceAmount = (inputAmount / exchangeRate).toFixed(2)
+  }
 
   useEffect(()=> {
     const url = `https://api.exchangerate-api.com/v4/latest/${source}`
@@ -22,6 +30,15 @@ function App() {
     })
   },[source, destination])
 
+  const onChangeSource = (e) => {
+    setInputAmount(e.target.value)
+    setCheckSource(true)
+  }
+  const onChangeDestination = (e) => {
+    setInputAmount(e.target.value)
+    setCheckSource(false)
+  }
+
   return (
     <div>
       <img src = {money} alt = "logo" className = "img-money"/>
@@ -31,12 +48,16 @@ function App() {
             currencyChoice = {currencyChoice} 
             selectedCurrency = {source}
             changeCurrency = {(e)=> setSource(e.target.value)}
+            inputAmount = {sourceAmount}
+            onChangeAmount = {onChangeSource}
           />
           <div className = "equal"> = </div>
           <Currency 
             currencyChoice = {currencyChoice}
             selectedCurrency = {destination}
             changeCurrency = {(e)=> setDestination(e.target.value)}
+            inputAmount = {destinationAmount}
+            onChangeAmount = {onChangeDestination}
           />
          </div>
     </div>
