@@ -14,7 +14,7 @@ main {
 }
 
 button {
-  background: transparent;
+  background: #eae6eb;
   border: transparent;
   width: 2rem;
   height: 2rem;
@@ -41,4 +41,8 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.content p{
+  color: gray;
 }

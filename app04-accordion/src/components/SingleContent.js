@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 const SingleContent = ({title, description}) => {
     const [showContent,setShowContent] = useState(false)
@@ -6,7 +7,9 @@ const SingleContent = ({title, description}) => {
         <article className = "content">
             <header>
                 <h1> {title} </h1>
-                <button className = "button" onClick = {()=>setShowContent(!showContent)}> Read more detail </button>
+                <button className = "button" onClick = {()=>setShowContent(!showContent)}>
+                    {showContent ? <AiOutlineMinus/> : <AiOutlinePlus/>}
+                </button>
             </header>
             {showContent && <p> {description} </p>}
         </article>
