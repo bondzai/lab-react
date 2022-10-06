@@ -1,3 +1,4 @@
+import "./App.css"
 import {useState} from "react";
 import SingleContent from "./components/SingleContent";
 import data from "./data";
