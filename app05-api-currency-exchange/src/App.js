@@ -8,12 +8,19 @@ function App() {
   const [source,setSource] = useState("USD")
   const [destination,setDestination] = useState("THB")
 
+  const [amount,setAmount] = useState(1)
+  const [exchangeRate,setExchangeRate] = useState(0)
+
+
   useEffect(()=> {
-    const url = "https://api.exchangerate-api.com/v4/latest/USD"
+    const url = `https://api.exchangerate-api.com/v4/latest/${source}`
     fetch(url)
     .then(res => res.json())
-    .then(data=>setCurrencyChoice([...Object.keys(data.rates)]))
-  },[])
+    .then(data=>{
+      setCurrencyChoice([...Object.keys(data.rates)])
+      setExchangeRate(data.rates[destination])
+    })
+  },[source, destination])
 
   return (
     <div>
