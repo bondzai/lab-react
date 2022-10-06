@@ -1,3 +1,4 @@
+import './Currency.css'
 const Currency = () => {
     return (
         <div className = "currency">

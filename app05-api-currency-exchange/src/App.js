@@ -4,7 +4,7 @@ import money from "./img/money.png"
 function App() {
   return (
     <div>
-      <img src = {money} alt = "logo"/>
+      <img src = {money} alt = "logo" className = "img-money"/>
       <h1> Currency convertion API</h1>
         <div className = "container">
           <Currency/>
