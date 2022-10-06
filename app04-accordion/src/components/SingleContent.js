@@ -1,11 +1,14 @@
+import { useState } from "react";
+
 const SingleContent = ({title, description}) => {
+    const [showContent,setShowContent] = useState(false)
     return (
         <article className = "content">
             <header>
                 <h1> {title} </h1>
-                <button className = "button"> Read more detail </button>
+                <button className = "button" onClick = {()=>setShowContent(!showContent)}> Read more detail </button>
             </header>
-            <p> {description} </p>
+            {showContent && <p> {description} </p>}
         </article>
     )
 }
