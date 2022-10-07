@@ -25,10 +25,12 @@ const ImageSlider = () => {
             {ImageData.map((data,index) => {
                 return (
                     <div className = {index === current ? "single active" : "single"} key = {index}>
-                        <div>
-                            <img src = {data.image} alt = {data.title} className = "image"/>
-                            <p>{data.title}</p>
-                        </div>
+                        {index === current && (
+                            <div>
+                                <img src = {data.image} alt = {data.title} className = "image"/>
+                                <p>{data.title}</p>
+                            </div>
+                        )}
                     </div>
                 )
             })}
