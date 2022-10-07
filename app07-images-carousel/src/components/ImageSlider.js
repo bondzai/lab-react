@@ -5,10 +5,18 @@ import { useState } from "react";
 const ImageSlider = () => {
     const [current, setCurrent] = useState(0)
     const slideBack = () => {
-        setCurrent(current - 1)
+        if (current === 0) {
+            setCurrent(ImageData.length - 1)
+        } else {
+            setCurrent(current - 1)
+        }
     }
     const slideForward = () => {
-        setCurrent(current + 1)
+        if (current === ImageData.length - 1) {
+            setCurrent(0)
+        } else {
+            setCurrent(current + 1)
+        }
     }
 
     return (
