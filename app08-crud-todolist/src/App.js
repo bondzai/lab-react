@@ -11,17 +11,22 @@ function App() {
 
   const submitData = (e) => {
     e.preventDefault()
-    const newTask = {
-      id : uuidv4(),
-      title : name
+    if (!name) {
+      setAlert({show:true, text : "Require", type : "error"})
+    } else {
+      const newTask = {
+        id : uuidv4(),
+        title : name
+      }
+      setList([...list,newTask])
+      setName("")
+      setAlert({show:true, text : "Insert successful", type : "success"})
     }
-    setList([...list,newTask])
-    setName("")
   }
   return (
     <section className = "container">
       <h1> TO DO LIST </h1>
-      {alert.show && <Alert/>}
+      {alert.show && <Alert {...alert} setAlert = {setAlert} list = {list}/>}
       <form className = "form-group" onSubmit = {submitData}>
         <div className = "form-control">
           <input type = "text" 
