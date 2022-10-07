@@ -1,6 +1,7 @@
 import './App.css';
 import {useState} from 'react'
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
+import List from "./components/List"
 
 function App() {
   const [name, setName] = useState("")
@@ -28,6 +29,11 @@ function App() {
           <button type = "submit" className = "input-button"> + </button>
         </div>
       </form>
+      <section className = "list-container">
+        {list.map((data, index) => {
+          return <List key = {index} {...data}/>
+        })}
+      </section>
     </section>
   );
 }
