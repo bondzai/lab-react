@@ -23,6 +23,11 @@ function App() {
       setAlert({show:true, text : "Insert successful", type : "success"})
     }
   }
+
+  const removeTask = (id) => {
+    console.log(id)
+  }
+
   return (
     <section className = "container">
       <h1> TO DO LIST </h1>
@@ -39,7 +44,7 @@ function App() {
       </form>
       <section className = "list-container">
         {list.map((data, index) => {
-          return <List key = {index} {...data}/>
+          return <List key = {index} {...data} removeTask = {removeTask}/>
         })}
       </section>
     </section>
