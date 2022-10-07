@@ -29,3 +29,10 @@
   z-index: 10;
   cursor: pointer;
 }
+
+.single {
+  opacity: 0;
+}
+.single.active {
+  opacity: 1;
+}
