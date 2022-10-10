@@ -1,13 +1,19 @@
 import "./App.css"
 import Content from "./components/Content";
 import Title from "./components/Title";
+import {createContext, useState} from "react"
+
+export const ThemeContext = createContext()
 
 function App() {
-  return (
-    <div>
-        <Title/>
-        <Content/>
-    </div>
+    const [theme, setTheme] = useState("light")
+    return (
+        <ThemeContext.Provider value = {{theme, setTheme}}>
+            <div>
+                <Title/>
+                <Content/>
+            </div>
+        </ThemeContext.Provider>
   );
 }
 

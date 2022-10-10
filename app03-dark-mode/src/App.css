@@ -30,3 +30,15 @@ main {
 main img {
   width: 50%;
 }
+
+header.dark {
+  background-color: #121312;
+  color: orange;
+}
+main.dark {
+  background-color: #121312;
+  color: whitesmoke;
+}
+main.dark p {
+  color: orange;
+}
