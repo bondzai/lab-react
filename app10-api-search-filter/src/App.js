@@ -1,19 +1,28 @@
 import './App.css';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 function App() {
-    const data = [
-        {id : 1, name : 'Thailand', region : 'Asia', population : 100},
-        {id : 2, name : 'Japan', region : 'Asia',population : 1000},
-        {id : 3, name : 'USA', region : 'America',population : 10000}
-    ]
-    const [country, setCountry] = useState(data)
+    const [countries, setCountries] = useState([])
+
+    useEffect(()=>{
+        fetch("https://restcountries.com/v2/all")
+        .then(res => res.json())
+        .then(data => {
+            setCountries(data)
+        })
+    },[])
+
     return (
         <div className = "contaioner">
             <ul>
-                {country.map((item) => {
+                {countries.map((item, index) => {
                     return (
-                        <li key = {item.id}> {item.name} </li>
+                        <li key = {index}> 
+                            <div>
+                                <img src = {item.flag} alt = {item.name}/>
+                                {item.name} | {item.region} | {item.population} 
+                            </div>
+                        </li>
                     )
                 })}
             </ul>
