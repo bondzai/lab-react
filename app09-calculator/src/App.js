@@ -1,8 +1,9 @@
 import './App.css';
+import Calculator from './conponents/Calculator';
 
 function App() {
   return (
-    <h1> Calculator </h1>
+    <Calculator/>
   )
 }
 
