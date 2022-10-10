@@ -4,10 +4,10 @@ import {useEffect, useState} from 'react';
 
 function App() {
     const api_key = `hiux8ewp2Amz_S5CVMvpO5MDeisItj9q9r_TAJoQglE`
-    const api_url = `https://api.unsplash.com/photos/?client_id=${api_key}&page=1`
     const [photos, setPhotos] = useState([])
 
     const fetchImage = async () => {
+        const api_url = `https://api.unsplash.com/photos/?client_id=${api_key}&page=1`
         const response = await fetch(api_url)
         const data = await response.json()
         setPhotos(data)
@@ -15,6 +15,15 @@ function App() {
 
     useEffect(() => {
         fetchImage()
+    },[])
+
+    useEffect(() => {
+        window.addEventListener('scroll', () => {
+            if (window.innerHeight + window.scrollY > document.body.offsetHeight - 500) {
+                console.log('load content')
+            }
+        })
+        return () => window.removeEventListener('scroll', Event)
     },[])
 
     return (
