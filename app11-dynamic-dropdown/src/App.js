@@ -1,9 +1,19 @@
 import './App.css';
+import Dropdown from './components/Dropdown';
+import Food from './components/Food';
+import {useState} from 'react'
+import Menudata from './data/MenuData'
 
 function App() {
+    const [food, setFood] = useState(Menudata)
     return (
-        <div className="App">
-            <h1> Hello React </h1>
+        <div className = "container">
+            <Dropdown/>
+            <div className = 'content'>
+                {food.map((item, index) => {
+                    return <Food key = {index} {...item}/>
+                })}
+            </div>
         </div>
     )
 }
