@@ -1,28 +1,41 @@
 import './Calculator.css';
+import {useState} from 'react';
 
 const Calculator = () => {
+    const [inputValue, setInputValue] = useState('0')
+    const display = (value) => {
+       if (inputValue.toString().charAt(0) === '0') {
+            setInputValue(value)
+       } else {
+            setInputValue(inputValue + value)
+       }
+    }
+    const reset = () => {
+        setInputValue('0')
+    }
+    
     return (
         <div className = "calculator">
             <div className = "calculator-display">
-                <h1> 0 </h1>
+                <h1> {inputValue} </h1>
             </div>
             <div className = "calculator-button">
-                <button className = "button-operation"> + </button>
-                <button className = "button-operation"> - </button>
-                <button className = "button-operation"> x </button>
-                <button className = "button-operation"> / </button>
-                <button className = "button-number">7</button>
-                <button className = "button-number">8</button>
-                <button className = "button-number">9</button>
-                <button className = "button-number">4</button>
-                <button className = "button-number">5</button>
-                <button className = "button-number">6</button>
-                <button className = "button-number">1</button>
-                <button className = "button-number">2</button>
-                <button className = "button-number">3</button>
-                <button className = "button-number">.</button>
-                <button className = "button-number">0</button>
-                <button className = "button-clear">c</button>
+                <button className = "button-operation" onClick={(e) => display('+')}> + </button>
+                <button className = "button-operation" onClick={(e) => display('-')}> - </button>
+                <button className = "button-operation" onClick={(e) => display('*')}> x </button>
+                <button className = "button-operation" onClick={(e) => display('/')}> / </button>
+                <button className = "button-number" onClick={(e) => display('7')}>7</button>
+                <button className = "button-number" onClick={(e) => display('8')}>8</button>
+                <button className = "button-number" onClick={(e) => display('9')}>9</button>
+                <button className = "button-number" onClick={(e) => display('4')}>4</button>
+                <button className = "button-number" onClick={(e) => display('5')}>5</button>
+                <button className = "button-number" onClick={(e) => display('6')}>6</button>
+                <button className = "button-number" onClick={(e) => display('1')}>1</button>
+                <button className = "button-number" onClick={(e) => display('2')}>2</button>
+                <button className = "button-number" onClick={(e) => display('3')}>3</button>
+                <button className = "button-number" onClick={(e) => display('.')}>.</button>
+                <button className = "button-number" onClick={(e) => display('0')}>0</button>
+                <button className = "button-clear" onClick={(e) => reset()}>c</button>
                 <button className = "button-equal">=</button>
             </div>
         </div>
