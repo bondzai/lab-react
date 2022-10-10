@@ -14,13 +14,24 @@ function App() {
 
     return (
         <div className = "contaioner">
-            <ul>
+            <ul className = "row">
                 {countries.map((item, index) => {
                     return (
                         <li key = {index}> 
-                            <div>
-                                <img src = {item.flag} alt = {item.name}/>
-                                {item.name} | {item.region} | {item.population} 
+                            <div className = "card">
+                                <div className = "card-title">
+                                    <img src = {item.flag} alt = {item.name}/>
+                                </div>
+                                <div className = "card-body">
+                                    <div className = "card-description">
+                                        <h2> {item.name} </h2>
+                                        <ol className = "card-list">
+                                            <li> Population : <span> {item.population} </span> </li>
+                                            <li> Region : <span> {item.region} </span> </li>
+                                            <li> Capital : <span> {item.capital} </span> </li>
+                                        </ol>
+                                    </div>
+                                </div>
                             </div>
                         </li>
                     )
