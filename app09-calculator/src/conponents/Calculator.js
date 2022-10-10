@@ -10,10 +10,14 @@ const Calculator = () => {
             setInputValue(inputValue + value)
        }
     }
-    const reset = () => {
+    const clear = () => {
         setInputValue('0')
     }
-    
+    const calculate = () => {
+        let result = eval(inputValue)
+        setInputValue(result)
+    }
+
     return (
         <div className = "calculator">
             <div className = "calculator-display">
@@ -35,8 +39,8 @@ const Calculator = () => {
                 <button className = "button-number" onClick={(e) => display('3')}>3</button>
                 <button className = "button-number" onClick={(e) => display('.')}>.</button>
                 <button className = "button-number" onClick={(e) => display('0')}>0</button>
-                <button className = "button-clear" onClick={(e) => reset()}>c</button>
-                <button className = "button-equal">=</button>
+                <button className = "button-clear" onClick={(e) => clear()}>c</button>
+                <button className = "button-equal" onClick={(e) => calculate()}>=</button>
             </div>
         </div>
     )
