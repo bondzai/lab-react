@@ -3,6 +3,8 @@ import {useState, useEffect} from 'react';
 
 function App() {
     const [countries, setCountries] = useState([])
+    const [target, setTarget] = useState("")
+    const [dataFilter] = useState(["name", "capital"])
 
     useEffect(()=>{
         fetch("https://restcountries.com/v2/all")
@@ -12,10 +14,28 @@ function App() {
         })
     },[])
 
+    const searchCountries = (countries) => {
+        return countries.filter((item) => {
+            return dataFilter.some((filter) => {
+                return item[filter].indexOf(target) > -1
+            })
+        })
+    }
     return (
-        <div className = "contaioner">
+        <div className = "container">
+            <div className = "search-container">
+                <label htmlFor = "search-form">
+                    <input 
+                        type = "text" 
+                        className = "search-input" 
+                        placeholder = "Seach here" 
+                        value = {target}
+                        onChange = {(e) => setTarget(e.target.value)}
+                    />
+                </label>
+            </div>
             <ul className = "row">
-                {countries.map((item, index) => {
+                {searchCountries(countries).map((item, index) => {
                     return (
                         <li key = {index}> 
                             <div className = "card">
