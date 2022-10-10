@@ -7,8 +7,17 @@ import Menudata from './data/MenuData'
 function App() {
     const [food, setFood] = useState(Menudata)
     const changeFoodData = (e) => {
-        console.log(e.target.value)
+        const category = e.target.value
+        if (category === "All") {
+            setFood(Menudata)
+        } else {
+            const result = Menudata.filter((item) => {
+                return item.menu === category
+           })
+           setFood(result)
+        }
     }
+
     return (
         <div className = "container">
             <Dropdown changeFoodData = {changeFoodData}/>

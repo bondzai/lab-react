@@ -7,7 +7,7 @@ const Dropdown = ({changeFoodData}) => {
                 <option value = "Fried"> Fried </option>
                 <option value = "Tomyum"> Tomyum </option>
                 <option value = "Drinks"> Drinks </option>
-                <option value = "Steaks"> Steaks </option>
+                <option value = "Steak"> Steaks </option>
             </select>
         </nav>
     )
