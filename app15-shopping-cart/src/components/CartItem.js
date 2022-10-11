@@ -5,7 +5,7 @@ import { MyCartContext } from "../management/context";
 
 
 const CartItem = ({id, name, image_url, price, quantity}) => {
-    const {removeItem} = MyCartContext()
+    const {removeItem, toggleQuantity} = MyCartContext()
     return (
         <div className = "item">
             <div className = "product-image">
@@ -16,11 +16,11 @@ const CartItem = ({id, name, image_url, price, quantity}) => {
                 <span> price : {price} btc</span>
             </div>
             <div className = "quantity">
-                <button className = "plus"> 
+                <button className = "plus" onClick = {() => toggleQuantity(id, "increment")}> 
                     <img src = {plus} alt = ""/>
                 </button>
                 <input type = "text" value = {quantity} disabled/>
-                <button className = "minus"> 
+                <button className = "minus" onClick = {() => toggleQuantity(id, "decrement")}> 
                     <img src = {minus} alt = ""/>
                 </button>
             </div>

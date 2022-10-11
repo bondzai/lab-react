@@ -5,8 +5,8 @@ import reducer from "./reducer"
 
 const initialState = {
     cart : CartData,
-    total : 110,
-    amount : 10
+    total : 0,
+    amount : 0
 }
 const CartContext = createContext()
 
@@ -20,8 +20,12 @@ const CartProvider = ({children}) => {
         dispatch({type:"REMOVE_ITEM", payload : id})
     }
 
+    const toggleQuantity = (id, direction) => {
+        dispatch({direction : "TOGGLE_QUANTITY", payload : {id, direction}})
+    }
+
     return (
-        <CartContext.Provider value = {{...state, removeItem}}>
+        <CartContext.Provider value = {{...state, removeItem, toggleQuantity}}>
             {children}
         </CartContext.Provider>
     )
