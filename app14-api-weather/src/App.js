@@ -13,7 +13,7 @@ function App() {
                         <h1> 28 Degree </h1>
                         <small> max : 37, min : 20</small>
                     </div>
-                    <div className = "information">
+                    <div className = "info">
                         <div className = "status"> Good </div>
                         <div className = "humidity"> 100 </div>
                         <div className = "wind"> 4.0 </div>
