@@ -5,8 +5,8 @@ import reducer from "./reducer"
 
 const initialState = {
     cart : CartData,
-    total : 0,
-    amount : 0
+    total : 110,
+    amount : 10
 }
 const CartContext = createContext()
 
