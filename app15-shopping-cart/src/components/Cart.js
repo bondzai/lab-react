@@ -1,12 +1,13 @@
 import CartItem from "./CartItem";
-import CartData from '../data/CartData'
+import { MyCartContext } from "../management/context";
 //import {useState} from 'react'
 
 const Cart = () => {
+    const {cart} = MyCartContext()
     return (
         <div className = "shopping-cart">
             <div className = "title"> items in cart </div>
-            {CartData.map((data) => {
+            {cart.map((data) => {
                 return <CartItem key = {data.id} {...data}/>
             })}
             <div className = "footer"> total price </div>
