@@ -13,7 +13,7 @@ const reducer = (state, action) => {
                     console.log("increase" + action.payload.id)
                     return {
                         ...item,
-                        quantity:item.quantity<5 ? item.quantity + 1 : item.quantity
+                        quantity:item.quantity < 5 ? item.quantity + 1 : item.quantity
                     }
                 }  
                 if (action.payload.type === "decrement") {
@@ -28,6 +28,23 @@ const reducer = (state, action) => {
         }).filter((item) => item.quantity != 0)
         return {
             ...state,cart:newCart
+        }
+    }
+
+    if (action.type === "CALCULATE_TOTAL") {
+        const {total, amount} = state.cart.reduce((cartTotal, item) => {
+            const {price, quantity} = item
+            const itemTotal = price * quantity
+            cartTotal.total += itemTotal
+            cartTotal.amount += quantity
+            return cartTotal
+        },
+        {
+            total : 0,
+            amount : 0
+        })
+        return {
+            ...state, total, amount
         }
     }
 }

@@ -3,7 +3,7 @@ import { MyCartContext } from "../management/context";
 //import {useState} from 'react'
 
 const Cart = () => {
-    const {cart, total} = MyCartContext()
+    const {cart, total, formatNumber} = MyCartContext()
     if (cart.length === 0) {
         return (
             <div className = "shopping-cart">
@@ -17,7 +17,7 @@ const Cart = () => {
                 {cart.map((data) => {
                     return <CartItem key = {data.id} {...data}/>
                 })}
-                <div className = "footer"> total price = {total} </div>
+                <div className = "footer"> total price = {formatNumber(total)} </div>
             </div>
         )
     }

@@ -1,5 +1,5 @@
 //create contect API (global variable)
-import {createContext, useContext, useReducer} from "react"
+import {createContext, useContext, useEffect, useReducer} from "react"
 import CartData from "../data/CartData"
 import reducer from "./reducer"
 
@@ -16,8 +16,17 @@ export const MyCartContext = () => {
 
 const CartProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
+
+    useEffect(()=> {
+        dispatch({type:"CALCULATE_TOTAL"})
+    },[state.cart])
+
     const removeItem = (id) => {
         dispatch({type:"REMOVE_ITEM", payload : id})
+    }
+
+    const formatNumber=(num)=> {
+        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
     }
 
     const toggleQuantity = (id, type) => {
@@ -25,7 +34,7 @@ const CartProvider = ({children}) => {
     }
 
     return (
-        <CartContext.Provider value = {{...state, removeItem, toggleQuantity}}>
+        <CartContext.Provider value = {{...state, removeItem, toggleQuantity, formatNumber}}>
             {children}
         </CartContext.Provider>
     )
