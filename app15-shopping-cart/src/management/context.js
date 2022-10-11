@@ -20,8 +20,8 @@ const CartProvider = ({children}) => {
         dispatch({type:"REMOVE_ITEM", payload : id})
     }
 
-    const toggleQuantity = (id, direction) => {
-        dispatch({direction : "TOGGLE_QUANTITY", payload : {id, direction}})
+    const toggleQuantity = (id, type) => {
+        dispatch({type : "TOGGLE_QUANTITY", payload : {id, type}})
     }
 
     return (
