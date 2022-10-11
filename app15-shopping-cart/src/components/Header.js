@@ -1,6 +1,11 @@
+import HeaderCart from "./HeaderCart";
+
 const Header = () => {
     return (
-        <h1> Header component </h1>
+        <header className = 'header'> 
+            React Shop
+            <HeaderCart/> 
+        </header>
     )
 }
 
