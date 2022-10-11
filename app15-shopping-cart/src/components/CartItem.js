@@ -1,7 +1,13 @@
-const CartItem = () => {
+const CartItem = ({id, name, image_url, price, quantity}) => {
     return (
-        <div>  
-            <h2> cart item component </h2>
+        <div className = "item">
+            <div className = "product-image">
+                <img src = {image_url} alt = ""/>
+            </div>  
+            <div className = "description">
+                <span> {name} </span>
+                <span> price : {price} btc</span>
+            </div>  
         </div>
     )
 }

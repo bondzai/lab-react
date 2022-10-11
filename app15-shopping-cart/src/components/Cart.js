@@ -9,7 +9,7 @@ const Cart = () => {
             {CartData.map((data) => {
                 return <CartItem key = {data.id} {...data}/>
             })}
-            <div className = "footer"> items in cart </div>
+            <div className = "footer"> total price </div>
         </div>
     )
 }
