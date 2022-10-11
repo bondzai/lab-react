@@ -15,7 +15,7 @@ function App() {
             setCity(data)
             setIsLoading(true)
         })
-    },[])
+    },[cityName])
 
     const convertTemp = (k) => {
         return (k-273).toFixed()
