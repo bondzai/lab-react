@@ -4,8 +4,9 @@ const Alert = ({text,type,setAlert,list}) => {
     useEffect(()=>{
         const timeOut = setTimeout(() => {
             setAlert({show : false, text : "", type : ""})
-        },3000)
+        },1500)
         return () => clearTimeout(timeOut)
+        // eslint-disable-next-line
     },[list])
 
     return (

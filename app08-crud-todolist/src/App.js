@@ -24,7 +24,7 @@ function App() {
     }
   }
 
-  const removeTask = (id) => {
+  const removeItem = (id) => {
     console.log(id)
   }
 
@@ -44,7 +44,7 @@ function App() {
       </form>
       <section className = "list-container">
         {list.map((data, index) => {
-          return <List key = {index} {...data} removeTask = {removeTask}/>
+          return <List key = {index} {...data} removeItem = {removeItem}/>
         })}
       </section>
     </section>
