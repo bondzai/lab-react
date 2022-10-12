@@ -7,8 +7,13 @@ function App() {
     const [foodData, setFoodData] = useState(MenuData)
     const pagination = () => {
         const foodPerPage = 5
-        const page = Math.ceil(MenuData.length / foodPerPage)
-        console.log(page)
+        const pages = Math.ceil(MenuData.length / foodPerPage)
+        
+        const newFood = Array.from({length : pages}, (data, index) =>{
+            const start = index * foodPerPage
+            return MenuData.slice(start, start + foodPerPage)
+        })
+        console.log(newFood)
     }
 
     useEffect(()=> {
