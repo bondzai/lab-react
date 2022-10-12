@@ -25,7 +25,11 @@ function App() {
   }
 
   const removeItem = (id) => {
-    console.log(id)
+    const newItems = list.filter((item) => {
+      return item.id !== id
+    })
+    setList(newItems)
+    setAlert({show : true, text : "delete successful", type : "error"})
   }
 
   return (
