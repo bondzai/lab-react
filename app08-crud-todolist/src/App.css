@@ -58,3 +58,9 @@ h1 {
   background: greenyellow;
   color: #121312;
 }
+
+.button {
+  cursor: pointer;
+  margin-left: 0.8rem;
+  font-size: 1.2rem;
+}
