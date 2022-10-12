@@ -1,10 +1,19 @@
 import './App.css';
 import Food from './components/Food'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import MenuData from './data/MenuData'
 
 function App() {
     const [foodData, setFoodData] = useState(MenuData)
+    const pagination = () => {
+        const foodPerPage = 5
+        const page = Math.ceil(MenuData.length / foodPerPage)
+        console.log(page)
+    }
+
+    useEffect(()=> {
+        pagination()
+    },[])
 
       return (
         <div className = "App">
