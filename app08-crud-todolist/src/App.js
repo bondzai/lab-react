@@ -8,6 +8,8 @@ function App() {
   const [name, setName] = useState("")
   const [list,setList] = useState([])
   const [alert,setAlert] = useState({show : false, text : "", type : ""})
+  const [checkEditItem, setCheckEditItem] = useState(false)
+  const [editID, setEditID] = useState("")
 
   const submitData = (e) => {
     e.preventDefault()
@@ -32,6 +34,15 @@ function App() {
     setAlert({show : true, text : "delete successful", type : "error"})
   }
 
+  const editItem = (id) => {
+    setCheckEditItem(true)
+    setEditID(id)
+    const target = list.find((item) => {
+      return item.id === id
+    })
+    setName(target.title)
+  }
+
   return (
     <section className = "container">
       <h1> TO DO LIST </h1>
@@ -43,12 +54,14 @@ function App() {
             onChange = {(e) => setName(e.target.value)}
             value = {name}
           />
-          <button type = "submit" className = "input-button"> + </button>
+          <button type = "submit" className = "input-button">
+             {checkEditItem ? "Update" : "Insert"}
+          </button>
         </div>
       </form>
       <section className = "list-container">
         {list.map((data, index) => {
-          return <List key = {index} {...data} removeItem = {removeItem}/>
+          return <List key = {index} {...data} removeItem = {removeItem} editItem = {editItem}/>
         })}
       </section>
     </section>
