@@ -49,7 +49,7 @@ const MenuData = [
     },
     {
         name : "ลาเต้",
-        image_url:"https://cdn.pixabay.com/photo/2015/10/12/14/54/coffee-983955_960_720.jpg"
+        image_url:"https://cdn.pixabay.com/photo/2015/05/07/13/46/cappuccino-756490_960_720.jpg"
     },
     {
         name : "ส้มตำ",
