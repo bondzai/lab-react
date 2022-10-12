@@ -5,20 +5,28 @@ import MenuData from './data/MenuData'
 
 function App() {
     const [foodData, setFoodData] = useState(MenuData)
+    const [dataInPage, setDataInPage] = useState([])
+    const [page, setPage] = useState(0)
+
     const pagination = () => {
-        const foodPerPage = 5
+        const foodPerPage = 4
         const pages = Math.ceil(MenuData.length / foodPerPage)
-        
         const newFood = Array.from({length : pages}, (data, index) =>{
             const start = index * foodPerPage
             return MenuData.slice(start, start + foodPerPage)
         })
-        console.log(newFood)
+        return newFood
+    }
+
+    const controlPage = (index) => {
+        setPage(index)
     }
 
     useEffect(()=> {
-        pagination()
-    },[])
+        const paginate = pagination()
+        setDataInPage(paginate)
+        setFoodData(paginate[page])
+    },[page])
 
       return (
         <div className = "App">
@@ -26,6 +34,13 @@ function App() {
             <div className = "container">
                 {foodData.map((item, index) => {
                     return <Food key = {index} {...item}/>
+                })}
+            </div>
+            <div className = "pagination-container">
+                {dataInPage.map((item, index) => {
+                    return  (
+                        <button key = {index} onClick = {()=> controlPage(index)}> {index + 1} </button>
+                    )
                 })}
             </div>
         </div>

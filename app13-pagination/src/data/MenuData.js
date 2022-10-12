@@ -52,7 +52,7 @@ const MenuData = [
         image_url:"https://cdn.pixabay.com/photo/2015/05/07/13/46/cappuccino-756490_960_720.jpg"
     },
     {
-        name : "ส้มตำ",
+        name : "Papaya salad",
         image_url:"https://cdn.pixabay.com/photo/2016/08/18/20/01/food-1603759_960_720.jpg"
     }
 ]
