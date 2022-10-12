@@ -9,12 +9,24 @@ function App() {
   const [list,setList] = useState([])
   const [alert,setAlert] = useState({show : false, text : "", type : ""})
   const [checkEditItem, setCheckEditItem] = useState(false)
-  const [editID, setEditID] = useState("")
+  const [editID, setEditID] = useState(null)
 
   const submitData = (e) => {
     e.preventDefault()
     if (!name) {
       setAlert({show:true, text : "Require", type : "error"})
+    } else if ((checkEditItem === true) && (name !== "")) {
+      const newiTems = list.map((item) => {
+        if (item.id === editID) {
+          return {...item, title : name}
+        }
+        return item
+      })
+      setList(newiTems)
+      setName("")
+      setCheckEditItem(false)
+      setEditID(null)
+      setAlert({show : true, text : "Update successfull", type : "success"})
     } else {
       const newTask = {
         id : uuidv4(),
