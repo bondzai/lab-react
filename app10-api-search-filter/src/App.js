@@ -4,7 +4,11 @@ import {useState, useEffect} from 'react';
 function App() {
     const [countries, setCountries] = useState([])
     const [target, setTarget] = useState("")
-    const [dataFilter] = useState(["name", "capital"])
+    const [dataFilter, setDataFilter] = useState(["name", "capital"])
+
+    const formatNumber = (num) => {
+        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    }
 
     useEffect(()=>{
         fetch("https://restcountries.com/v2/all")
@@ -13,6 +17,16 @@ function App() {
             setCountries(data)
         })
     },[])
+
+    const searchCountries = (countries) => {
+        return countries.filter((item) => {
+            return dataFilter.some((e) => {
+                if (item[e]) {
+                    return item[e].toString().toLowerCase().indexOf(target.toLocaleLowerCase()) > -1 
+                }
+            })
+        })
+    }
 
     return (
         <div className = "container">
@@ -28,7 +42,7 @@ function App() {
                 </label>
             </div>
             <ul className = "row">
-                {countries.map((item, index) => {
+                {searchCountries(countries).map((item, index) => {
                     return (
                         <li key = {index}> 
                             <div className = "card">
@@ -39,7 +53,7 @@ function App() {
                                     <div className = "card-description">
                                         <h2> {item.name} </h2>
                                         <ol className = "card-list">
-                                            <li> Population : <span> {item.population} </span> </li>
+                                            <li> Population : <span> {formatNumber(item.population)} </span> </li>
                                             <li> Region : <span> {item.region} </span> </li>
                                             <li> Capital : <span> {item.capital} </span> </li>
                                         </ol>
