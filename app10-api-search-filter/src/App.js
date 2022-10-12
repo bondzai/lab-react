@@ -14,13 +14,6 @@ function App() {
         })
     },[])
 
-    const searchCountries = (countries) => {
-        return countries.filter((item) => {
-            return dataFilter.some((filter) => {
-                return item[filter].indexOf(target) > -1
-            })
-        })
-    }
     return (
         <div className = "container">
             <div className = "search-container">
@@ -35,7 +28,7 @@ function App() {
                 </label>
             </div>
             <ul className = "row">
-                {searchCountries(countries).map((item, index) => {
+                {countries.map((item, index) => {
                     return (
                         <li key = {index}> 
                             <div className = "card">
@@ -54,8 +47,7 @@ function App() {
                                 </div>
                             </div>
                         </li>
-                    )
-                })}
+                    )})}
             </ul>
         </div>
     );
