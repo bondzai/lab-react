@@ -39,7 +39,7 @@ function App() {
             <div className = "pagination-container">
                 {dataInPage.map((item, index) => {
                     return  (
-                        <button key = {index} onClick = {()=> controlPage(index)}> {index + 1} </button>
+                        <button key = {index} onClick = {()=> controlPage(index)} className = {`page-button ${index === page ? "button-active" : null}`}> {index + 1} </button>
                     )
                 })}
             </div>
