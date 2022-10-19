@@ -1,4 +1,4 @@
-import './Currency.css'
+import '../App.css'
 const Currency = (props) => {
     const {currencyChoice, selectedCurrency, changeCurrency, inputAmount, onChangeAmount} = props      
     return (

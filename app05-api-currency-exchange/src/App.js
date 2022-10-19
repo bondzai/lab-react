@@ -24,7 +24,7 @@ function App() {
     const url = `https://api.exchangerate-api.com/v4/latest/${source}`
     fetch(url)
     .then(res => res.json())
-    .then(data=>{
+    .then(data => {
       setCurrencyChoice([...Object.keys(data.rates)])
       setExchangeRate(data.rates[destination])
     })
@@ -42,7 +42,7 @@ function App() {
   return (
     <div>
       <img src = {money} alt = "logo" className = "img-money"/>
-      <h1> Currency convertion API</h1>
+      <h1> API CURRENCY EXCHANGE </h1>
         <div className = "container">
           <Currency 
             currencyChoice = {currencyChoice} 
