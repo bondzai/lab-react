@@ -1,6 +1,5 @@
 import { BiEdit, BiTrash } from "react-icons/bi";
 
-
 const List = ({id, title, removeItem, editItem}) => {
     return (
         <div className = "list-item">
