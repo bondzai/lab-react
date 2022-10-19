@@ -1,4 +1,4 @@
-import './Calculator.css';
+import '../App.css';
 import {useState} from 'react';
 
 const Calculator = () => {
