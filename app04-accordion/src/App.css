@@ -1,3 +1,6 @@
+body {
+  background: #121312;
+}
 main {
   display: flex;
   min-height: 100vh;
@@ -12,7 +15,6 @@ main {
   padding: 2rem 2rem;
   max-width: 920px;
 }
-
 button {
   background: #eae6eb;
   border: transparent;
@@ -28,7 +30,10 @@ button {
   align-self: center;
   min-width: none;
 }
-
+button:hover {
+  background: yellow;
+  color:black;
+}
 .content {
   padding: 1rem 1.5rem;
   border: 2px solid #eae6eb;
@@ -36,13 +41,11 @@ button {
   border-radius: 0.23rem;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
-
 .content header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .content p{
   color: gray;
 }

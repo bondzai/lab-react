@@ -7,7 +7,7 @@ const SingleContent = ({title, description}) => {
         <article className = "content">
             <header>
                 <h1> {title} </h1>
-                <button className = "button" onClick = {()=>setShowContent(!showContent)}>
+                <button className = "button" onClick = {()=> setShowContent(!showContent)}>
                     {showContent ? <AiOutlineMinus/> : <AiOutlinePlus/>}
                 </button>
             </header>

@@ -9,7 +9,7 @@
 .menu, .quiz, .score {
   width: 500px;
   height: 500px;
-  background: lightblue;
+  background: royalblue;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -24,8 +24,9 @@
   border-radius: 5px;
   font-size: 20px;
   cursor: pointer;
+  background: whitesmoke;
 }
 button:hover {
-  background: greenyellow;
-  color:white;
+  background: yellow;
+  color:black;
 }
